@@ -1,5 +1,5 @@
 module "resourceGroup" {
   source  = "./modules/resourceGroup"
-  name = var.rg_name
-  location = var.rg.location
+  name = var.name
+  location = var.location
 }
