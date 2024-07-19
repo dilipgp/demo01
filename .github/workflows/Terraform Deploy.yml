@@ -1,10 +1,27 @@
 name: "Terraform Deploy"
-# configure manual trigger
 on:
   workflow_dispatch:
-# permissions:
-#    id-token: write
-#    contents: read
+    inputs:
+      do_apply:
+        type: boolean
+        description: 'Run Apply?'
+        required: true
+        default: false
+      region:
+        type: choice
+        description: 'Azure region for deployment'
+        required: true
+        default: 'eastus'
+        options:
+        - 'eastus'
+        - 'westus'
+permissions:
+  id-token: write
+  contents: read
+
+defaults:
+  run:
+    shell: bash
  
 jobs:
   terraform:
