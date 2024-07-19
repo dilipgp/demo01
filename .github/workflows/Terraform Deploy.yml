@@ -1,14 +1,12 @@
-name: 'Terraform Deploy'
- 
+name: "Terraform Deploy"
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
-  workflow_dispatch: # This allows manual triggering of the workflow
-
-permissions:
-   id-token: write
-   contents: read
+      - "main"
+# permissions:
+#    id-token: write
+#    contents: read
  
 jobs:
   terraform:
