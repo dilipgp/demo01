@@ -25,5 +25,3 @@ resource "azurerm_subnet" "example" {
     }
   }
 }
-
-#dilip
