@@ -1,24 +1,15 @@
-name: "Terraform Deploy_Backup"
+name: Terraform Plan or Apply
 on:
   workflow_dispatch:
     inputs:
-      do_apply:
-        type: boolean
-        description: 'Run Apply?'
+      action:
+        description: 'Select Plan or Apply'
         required: true
-        default: false
-      region:
+        default: 'plan'
         type: choice
-        description: 'Azure region for deployment'
-        required: true
-        default: 'eastus'
         options:
-        - 'eastus'
-        - 'westus'
-permissions:
-  id-token: write
-  contents: read
-
+          - plan
+          - apply
 defaults:
   run:
     shell: bash
