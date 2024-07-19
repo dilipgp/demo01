@@ -1,6 +1,7 @@
 variable "name" {
     description = "Rg name"
     type = string
+    default = "RG-test000001"
   }
 
 variable "location" {
