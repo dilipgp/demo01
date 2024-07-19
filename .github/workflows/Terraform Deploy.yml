@@ -10,13 +10,6 @@ on:
         options:
           - plan
           - apply
-        region:
-        description: 'Select the region'
-        required: true
-        type: choice
-        options:
-          - East Us
-          - West Us
 defaults:
   run:
     shell: bash
@@ -45,17 +38,14 @@ jobs:
     - name: Terraform Init
       run: terraform init
       working-directory: ./
+ 
     - name: Terraform Plan
       if: ${{ github.event.inputs.action == 'plan' }}
-      env:
-      TF_VAR_region: ${{ github.event.inputs.region }}
       run: terraform plan
       working-directory: ./
-      
+ 
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/main'
       if: ${{ github.event.inputs.action == 'apply' }}
-      env:
-      TF_VAR_region: ${{ github.event.inputs.region }}
       run: terraform apply -auto-approve
       working-directory: ./
