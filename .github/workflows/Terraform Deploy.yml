@@ -2,23 +2,14 @@ name: "Terraform Deploy"
 on:
   workflow_dispatch:
     inputs:
-      do_apply:
-        type: boolean
-        description: 'Run Apply?'
+      action:
+        description: 'Select Plan or Apply'
         required: true
-        default: false
-      region:
+        default: 'plan'
         type: choice
-        description: 'Azure region for deployment'
-        required: true
-        default: 'eastus'
         options:
-        - 'eastus'
-        - 'westus'
-permissions:
-  id-token: write
-  contents: read
-
+          - plan
+          - apply
 defaults:
   run:
     shell: bash
@@ -49,10 +40,12 @@ jobs:
       working-directory: ./
  
     - name: Terraform Plan
+      if: ${{ github.event.inputs.action == 'plan' }}
       run: terraform plan
       working-directory: ./
  
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/main'
+      if: ${{ github.event.inputs.action == 'apply' }}
       run: terraform apply -auto-approve
       working-directory: ./
