@@ -1,0 +1,10 @@
+*~
+.terraform.lock.hcl
+.terragrunt-cache/
+/*/backend.tf
+/*/providers.tf
+
+
+## terraform directories and state files
+**/.terraform/*
+*.tfstate
