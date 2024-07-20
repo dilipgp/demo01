@@ -39,10 +39,12 @@ jobs:
       working-directory: ./
  
     - name: Terraform Plan
+      if: ${{ github.event.inputs.action == 'plan' }}
       run: terraform plan
       working-directory: ./
  
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/main'
+      if: ${{ github.event.inputs.action == 'apply' }}
       run: terraform apply -auto-approve
       working-directory: ./

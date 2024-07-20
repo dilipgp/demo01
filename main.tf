@@ -1,4 +1,5 @@
-resource "azurerm_resource_group" "rg" {
-  name     = "rg-demo001"
-  location = "East US"
+module "resourceGroup" {
+  source  = "./modules/resourceGroup"
+  name = var.name
+  location = var.location
 }
