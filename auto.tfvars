@@ -1,2 +1,2 @@
-name = "avmModuleTesting2"
+name     = "avmModuleTesting2"
 location = "eastus"
